@@ -12,48 +12,60 @@ import GooglePlaces
 
 class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
 
-    var starRating: Int = 0
+    var locationModel: LocationService?
+    var locationLists: [LocationList]?
     
-    let marker = GMSMarker()
+    var ratingModel: RatingService?
+    var ratingInformation: RatingInformation?
+    
+    var marker: [GMSMarker] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        // network
+        locationModel = LocationService()
+        locationModel?.getLocationList{ locationLists in
+            self.locationLists = locationLists
+        }
+        
+        ratingModel = RatingService()
+        
+        // Google Map
         let camera = GMSCameraPosition.camera(withLatitude: 37.498508, longitude: 127.034222, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.settings.myLocationButton = true
         mapView.delegate = self
         view = mapView
         
-        // Creates a marker in the center of the map.
-        marker.position = CLLocationCoordinate2D(latitude: 37.498508, longitude: 127.034222)
-        marker.title = "megazone"
-        marker.snippet = "Korea"
-        setMakerColor()
-        marker.map = mapView
+        for location in locationLists ?? [] {
+            marker[location.id] = GMSMarker()
+            marker[location.id].position = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            marker[location.id].title = location.name
+            marker[location.id].snippet = location.description
+            setMakerColor(id: location.id)
+            marker[location.id].zIndex = Int32(location.id)
+            marker[location.id].map = mapView
+        }
     }
     
-    func setMakerColor() {
-        if starRating ?? 0 >= 0 && starRating ?? 0 <= 2 { marker.icon = GMSMarker.markerImage(with: .lightGray) }
-        else if starRating ?? 0 == 3 { marker.icon = GMSMarker.markerImage(with: .blue) }
-        else if starRating ?? 0 == 4 { marker.icon = GMSMarker.markerImage(with: .yellow) }
-        else if starRating ?? 0 == 5 { marker.icon = GMSMarker.markerImage(with: .red) }
+    func setMakerColor(id: Int) {
+        ratingModel?.getRatingInformation(id: id) { ratingInformation in
+            if ratingInformation.rating >= 0 && ratingInformation.rating <= 2 { self.marker[id].icon = GMSMarker.markerImage(with: .lightGray) }
+            else if ratingInformation.rating == 3 { self.marker[id].icon = GMSMarker.markerImage(with: .blue) }
+            else if ratingInformation.rating == 4 { self.marker[id].icon = GMSMarker.markerImage(with: .yellow) }
+            else if ratingInformation.rating == 5 { self.marker[id].icon = GMSMarker.markerImage(with: .red) }
+        }
+        
     }
 
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "Detail")
+        guard let viewController: DetailViewController = storyboard.instantiateViewController(withIdentifier: "Detail") as? DetailViewController else { return }
+        let id = Int(marker.zIndex)
+        viewController.id = id
+        viewController.name = locationLists?[id].name ?? ""
+        viewController.descriptions = locationLists?[id].description ?? ""
+        viewController.address = locationLists?[id].address ?? ""
         self.present(viewController, animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -3,11 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		22BEE862EF028AEEC708C6EF /* Pods_MapOfFamousRestaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0D595BB1C1083B883CF0C5 /* Pods_MapOfFamousRestaurant.framework */; };
+		D95A61CE22C901920007A655 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61CD22C901920007A655 /* AddRestaurantViewController.swift */; };
+		D95A61D022C913EE0007A655 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61CF22C913EE0007A655 /* Location.swift */; };
+		D95A61D222C913F70007A655 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D122C913F70007A655 /* Rating.swift */; };
+		D95A61D422C9157B0007A655 /* LocationNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D322C9157B0007A655 /* LocationNetworkModel.swift */; };
+		D95A61D622C915870007A655 /* RatingNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D522C915870007A655 /* RatingNetworkModel.swift */; };
+		D95A61D822C918610007A655 /* ServerString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D722C918610007A655 /* ServerString.swift */; };
 		D9619E7522C39D1100CF34FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9619E7422C39D1100CF34FE /* AppDelegate.swift */; };
 		D9619E7A22C39D1100CF34FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9619E7822C39D1100CF34FE /* Main.storyboard */; };
 		D9619E7C22C39D1400CF34FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9619E7B22C39D1400CF34FE /* Assets.xcassets */; };
@@ -20,6 +26,12 @@
 
 /* Begin PBXFileReference section */
 		BE0D595BB1C1083B883CF0C5 /* Pods_MapOfFamousRestaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapOfFamousRestaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D95A61CD22C901920007A655 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
+		D95A61CF22C913EE0007A655 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		D95A61D122C913F70007A655 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		D95A61D322C9157B0007A655 /* LocationNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNetworkModel.swift; sourceTree = "<group>"; };
+		D95A61D522C915870007A655 /* RatingNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingNetworkModel.swift; sourceTree = "<group>"; };
+		D95A61D722C918610007A655 /* ServerString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerString.swift; sourceTree = "<group>"; };
 		D9619E7122C39D1100CF34FE /* MapOfFamousRestaurant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MapOfFamousRestaurant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9619E7422C39D1100CF34FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9619E7922C39D1100CF34FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,7 +96,6 @@
 		D9619E7322C39D1100CF34FE /* MapOfFamousRestaurant */ = {
 			isa = PBXGroup;
 			children = (
-				D9619E8E22C4985000CF34FE /* services */,
 				D9619E8D22C4984400CF34FE /* models */,
 				D9619E8A22C497C700CF34FE /* view controllers */,
 				D9619E8B22C497E000CF34FE /* storyboards */,
@@ -100,6 +111,7 @@
 				D9619E8822C497BF00CF34FE /* GoogleMapViewController.swift */,
 				D96584F522C4B0310072CC5E /* DetailViewController.swift */,
 				D96584F722C4B06C0072CC5E /* SetStarViewController.swift */,
+				D95A61CD22C901920007A655 /* AddRestaurantViewController.swift */,
 			);
 			path = "view controllers";
 			sourceTree = "<group>";
@@ -119,6 +131,7 @@
 				D9619E7B22C39D1400CF34FE /* Assets.xcassets */,
 				D9619E7D22C39D1400CF34FE /* LaunchScreen.storyboard */,
 				D9619E8022C39D1400CF34FE /* Info.plist */,
+				D95A61D722C918610007A655 /* ServerString.swift */,
 			);
 			path = "supporting files";
 			sourceTree = "<group>";
@@ -126,15 +139,12 @@
 		D9619E8D22C4984400CF34FE /* models */ = {
 			isa = PBXGroup;
 			children = (
+				D95A61CF22C913EE0007A655 /* Location.swift */,
+				D95A61D322C9157B0007A655 /* LocationNetworkModel.swift */,
+				D95A61D122C913F70007A655 /* Rating.swift */,
+				D95A61D522C915870007A655 /* RatingNetworkModel.swift */,
 			);
 			path = models;
-			sourceTree = "<group>";
-		};
-		D9619E8E22C4985000CF34FE /* services */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +159,7 @@
 				D9619E6E22C39D1100CF34FE /* Frameworks */,
 				D9619E6F22C39D1100CF34FE /* Resources */,
 				8B01B42E744BB61AF58DFD5D /* [CP] Copy Pods Resources */,
+				8C07A755D2589F67BEAE763F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -212,22 +223,32 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MapOfFamousRestaurant/Pods-MapOfFamousRestaurant-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-MapOfFamousRestaurant/Pods-MapOfFamousRestaurant-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-MapOfFamousRestaurant/Pods-MapOfFamousRestaurant-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapOfFamousRestaurant/Pods-MapOfFamousRestaurant-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C07A755D2589F67BEAE763F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapOfFamousRestaurant/Pods-MapOfFamousRestaurant-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MapOfFamousRestaurant/Pods-MapOfFamousRestaurant-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MapOfFamousRestaurant/Pods-MapOfFamousRestaurant-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D7867EF045EFF8F6147FCFE0 /* [CP] Check Pods Manifest.lock */ = {
@@ -259,11 +280,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D95A61D822C918610007A655 /* ServerString.swift in Sources */,
 				D9619E7522C39D1100CF34FE /* AppDelegate.swift in Sources */,
 				D96584F822C4B06C0072CC5E /* SetStarViewController.swift in Sources */,
 				D9619E8722C39E0000CF34FE /* MapViewController.swift in Sources */,
 				D9619E8922C497BF00CF34FE /* GoogleMapViewController.swift in Sources */,
+				D95A61D222C913F70007A655 /* Rating.swift in Sources */,
+				D95A61D622C915870007A655 /* RatingNetworkModel.swift in Sources */,
 				D96584F622C4B0310072CC5E /* DetailViewController.swift in Sources */,
+				D95A61D422C9157B0007A655 /* LocationNetworkModel.swift in Sources */,
+				D95A61CE22C901920007A655 /* AddRestaurantViewController.swift in Sources */,
+				D95A61D022C913EE0007A655 /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

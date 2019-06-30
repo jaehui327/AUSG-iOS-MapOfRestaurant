@@ -6,6 +6,7 @@ target 'MapOfFamousRestaurant' do
   use_frameworks!
   pod 'GoogleMaps'
   pod 'GooglePlaces'
-  # Pods for MapOfFamousRestaurant
+  pod 'Alamofire', '~> 4.8.0' 
+ # Pods for MapOfFamousRestaurant
 
 end

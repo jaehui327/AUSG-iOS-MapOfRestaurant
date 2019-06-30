@@ -9,7 +9,11 @@
 import UIKit
 
 class SetStarViewController: UIViewController {
-
+    
+    var ratingModel: RatingService?
+    
+    var id: Int = 0
+    
     var starNum = 0
     
     @IBOutlet weak var star1: UIImageView!
@@ -21,16 +25,16 @@ class SetStarViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     @IBAction func sendRating(_ sender: Any) {
-        self.dismiss(animated: true) {
-            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            guard let viewController: GoogleMapViewController = storyboard.instantiateViewController(withIdentifier: "GoogleMap") as? GoogleMapViewController else { return }
-            viewController.starRating = self.starNum
+        ratingModel?.postRatingInformation(rating: Double(starNum), locationId: id) { RatingInformation in
+            self.dismiss(animated: true, completion: nil)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        ratingModel = RatingService()
+        
         star1.isUserInteractionEnabled = true
         star2.isUserInteractionEnabled = true
         star3.isUserInteractionEnabled = true
@@ -94,5 +98,5 @@ class SetStarViewController: UIViewController {
             
         }
     }
-
+    
 }

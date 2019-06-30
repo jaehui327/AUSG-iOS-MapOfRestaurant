@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +26,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Mg-OI-WBu">
-                                <rect key="frame" x="72" y="242" width="270.5" height="72"/>
+                                <rect key="frame" x="72" y="247.5" width="270.5" height="72"/>
                                 <string key="text">Map Of 
 Famous Restaurant</string>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
@@ -33,10 +34,10 @@ Famous Restaurant</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.94638603929999998" green="0.62008076909999998" blue="0.2194641829" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" name="orange"/>
                         <constraints>
                             <constraint firstItem="6Mg-OI-WBu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="RWc-T6-G0y"/>
-                            <constraint firstItem="6Mg-OI-WBu" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="0.5" constant="18" id="VEy-7I-sIh"/>
+                            <constraint firstItem="mcT-Xl-Gwp" firstAttribute="top" secondItem="6Mg-OI-WBu" secondAttribute="bottom" constant="30" id="bF8-jb-12Y"/>
                             <constraint firstItem="mcT-Xl-Gwp" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="d7U-gS-MjN"/>
                             <constraint firstItem="mcT-Xl-Gwp" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="1:2" id="vDd-ND-zHr"/>
                             <constraint firstItem="mcT-Xl-Gwp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xQV-e7-40K"/>
@@ -51,5 +52,8 @@ Famous Restaurant</string>
     </scenes>
     <resources>
         <image name="AUSG_logo" width="3126" height="3126"/>
+        <namedColor name="orange">
+            <color red="1" green="0.59999999999999998" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
