@@ -40,3 +40,4 @@ AWS 서비스를 사용하여 서버를 구축하기 때문에 AWS 계정이 필
 
 - [RDS 생성하기](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/RDS_guide.md)
 
+- [Node.js 코드 만들기](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/Nodejs_guide.md)
