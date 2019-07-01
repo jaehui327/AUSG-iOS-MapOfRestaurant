@@ -38,5 +38,5 @@ AWS 서비스를 사용하여 서버를 구축하기 때문에 AWS 계정이 필
 
 ### 준비가 끝났으니 단계에 따라 천천히 따라와 주세요! 👋
 
-- [RDS 생성하기](https://github.com/yebonkim/android-realtime-quiz/blob/master/guide/RDS_guide.md)
+- [RDS 생성하기](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/RDS_guide.md)
 
