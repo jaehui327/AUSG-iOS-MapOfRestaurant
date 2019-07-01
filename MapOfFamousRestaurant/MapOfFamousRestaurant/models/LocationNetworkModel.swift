@@ -18,7 +18,7 @@ struct LocationService {
                       "name" : name,
                       "description" : description,
                       "address" : address] as [String : Any]
-        Alamofire.request("\(SERVER_URL)/location",
+        Alamofire.request("\(SERVER_URL)/locations",
             method: .post,
             parameters: params,
             encoding: JSONEncoding.default,
@@ -40,7 +40,7 @@ struct LocationService {
     // 모든 주소 가져오기
     // GET /locations
     func getLocationList(completionHandler: @escaping ([LocationList]) -> Void) {
-        Alamofire.request("\(SERVER_URL)/location",
+        Alamofire.request("\(SERVER_URL)/locations",
             method: .get,
             parameters: nil,
             headers: nil).responseData{ dataResponse in

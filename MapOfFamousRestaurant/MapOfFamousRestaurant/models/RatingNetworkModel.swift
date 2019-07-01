@@ -15,7 +15,7 @@ struct RatingService {
     func postRatingInformation(rating: Double, locationId: Int, completionHandler: @escaping (RatingInformation) -> Void) {
         let params = ["rating" : rating,
                       "locationId" : locationId] as [String : Any]
-        Alamofire.request("\(SERVER_URL)/rating",
+        Alamofire.request("\(SERVER_URL)/ratings",
             method: .post,
             parameters: params,
             encoding: JSONEncoding.default,
@@ -38,7 +38,7 @@ struct RatingService {
     // GET /rating
     func getRatingInformation(id: Int, completionHandler: @escaping (RatingInformation) -> Void) {
         let params = ["id" : id]
-        Alamofire.request("\(SERVER_URL)/rating",
+        Alamofire.request("\(SERVER_URL)/ratings",
             method: .get,
             parameters: params,
             headers: nil).responseData{ dataResponse in
