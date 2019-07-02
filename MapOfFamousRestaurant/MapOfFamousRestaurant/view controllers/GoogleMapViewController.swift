@@ -17,8 +17,6 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
     var ratingModel: RatingService?
     var ratingInformation: RatingInformation?
     
-    let currentMarker = GMSMarker()
-    
     var marker: [GMSMarker] = []
     
     override func viewDidLoad() {
@@ -30,38 +28,39 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         mapView.delegate = self
         view = mapView
         
-        // 현재 위치
-        // 메가존 좌표: 37.498508, 127.034222
-        currentMarker.position = CLLocationCoordinate2D(latitude: 37.498508, longitude: 127.034222)
-        currentMarker.title = "megazone"
-        currentMarker.snippet = "Korea"
-        currentMarker.icon = GMSMarker.markerImage(with: .gray)
-        currentMarker.map = mapView
-        
         // network
+        ratingModel = RatingService()
+        
         locationModel = LocationService()
         locationModel?.getLocationList{ locationLists in
             self.locationLists = locationLists
-        }
-        
-        ratingModel = RatingService()
-        
-        for location in locationLists ?? [] {
-            marker[location.id] = GMSMarker()
-            marker[location.id].position = CLLocationCoordinate2D(latitude: location.latitude ?? 0.0, longitude: location.longitude ?? 0.0)
-            marker[location.id].title = location.name
-            marker[location.id].snippet = location.description
-            setMakerColor(id: location.id)
-            marker[location.id].zIndex = Int32(location.id)
-            marker[location.id].map = mapView
+            
+            // 현재 위치
+            // 메가존 좌표: 37.498508, 127.034222
+            self.marker.append(GMSMarker())
+            self.marker[0].position = CLLocationCoordinate2D(latitude: 37.498508, longitude: 127.034222)
+            self.marker[0].title = "megazone"
+            self.marker[0].snippet = "Korea"
+            self.marker[0].icon = GMSMarker.markerImage(with: .gray)
+            self.marker[0].map = mapView
+            
+            for location in self.locationLists ?? [] {
+                self.marker.append(GMSMarker())
+                self.marker[location.id].position = CLLocationCoordinate2D(latitude: location.latitude ?? 0.0, longitude: location.longitude ?? 0.0)
+                self.marker[location.id].title = location.name
+                self.marker[location.id].snippet = location.description
+                self.setMakerColor(id: location.id)
+                self.marker[location.id].zIndex = Int32(location.id)
+                self.marker[location.id].map = mapView
+            }
         }
     }
     
     func setMakerColor(id: Int) {
         ratingModel?.getRatingInformation(id: id) { ratingInformation in
-            if ratingInformation.rating >= 0 && ratingInformation.rating <= 2 { self.marker[id].icon = GMSMarker.markerImage(with: .lightGray) }
-            else if ratingInformation.rating == 3 { self.marker[id].icon = GMSMarker.markerImage(with: .blue) }
-            else if ratingInformation.rating == 4 { self.marker[id].icon = GMSMarker.markerImage(with: .yellow) }
+            if ratingInformation.rating >= 0 && ratingInformation.rating < 3 { self.marker[id].icon = GMSMarker.markerImage(with: .lightGray) }
+            else if ratingInformation.rating >= 3 && ratingInformation.rating < 4 { self.marker[id].icon = GMSMarker.markerImage(with: .blue) }
+            else if ratingInformation.rating >= 4 && ratingInformation.rating < 5 { self.marker[id].icon = GMSMarker.markerImage(with: .yellow) }
             else if ratingInformation.rating == 5 { self.marker[id].icon = GMSMarker.markerImage(with: .red) }
         }
         
