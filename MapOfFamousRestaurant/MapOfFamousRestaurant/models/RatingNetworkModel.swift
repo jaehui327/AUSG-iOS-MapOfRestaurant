@@ -38,7 +38,7 @@ struct RatingService {
     // GET /rating
     func getRatingInformation(id: Int, completionHandler: @escaping (RatingInformation) -> Void) {
         let params = ["id" : id]
-        Alamofire.request("\(SERVER_URL)/ratings",
+        Alamofire.request("\(SERVER_URL)/ratings/\(id)",
             method: .get,
             parameters: params,
             headers: nil).responseData{ dataResponse in

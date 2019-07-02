@@ -8,10 +8,8 @@
 
 import Foundation
 
-// 별점 전송 프로토콜
-// POST /rating
+// 별점 응답 프로토콜
+// GET /rating
 struct RatingInformation: Codable {
-    let id: Int
     let rating: Double
-    let locationId: Int
 }

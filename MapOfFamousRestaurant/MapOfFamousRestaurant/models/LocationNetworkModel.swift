@@ -12,7 +12,7 @@ struct LocationService {
     
     // 주소 등록하기
     // POST /locations
-    func postLocationInformation(longitude: Double, latitude: Double, name: String, description: String, address: String, completionHandler: @escaping ([LocationList]) -> Void) {
+    func postLocationInformation(longitude: Double, latitude: Double, name: String, description: String, address: String, completionHandler: @escaping (LocationList) -> Void) {
         let params = ["longitude" : longitude,
                       "latitude" : latitude,
                       "name" : name,
@@ -26,8 +26,8 @@ struct LocationService {
                 switch dataResponse.result {
                 case .success(let data):
                     do {
-                        let locationLists = try JSONDecoder().decode([LocationList].self, from: data)
-                        completionHandler(locationLists)
+                        let locationList = try JSONDecoder().decode(LocationList.self, from: data)
+                        completionHandler(locationList)
                     } catch {
                         print("Got and error: \(error)")
                     }
@@ -51,7 +51,7 @@ struct LocationService {
                         completionHandler(locationLists)
                     } catch {
                         print("Got and error: \(error)")
-                    }
+                }
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

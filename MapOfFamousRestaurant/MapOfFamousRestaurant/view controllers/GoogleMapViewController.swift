@@ -48,7 +48,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         
         for location in locationLists ?? [] {
             marker[location.id] = GMSMarker()
-            marker[location.id].position = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            marker[location.id].position = CLLocationCoordinate2D(latitude: location.latitude ?? 0.0, longitude: location.longitude ?? 0.0)
             marker[location.id].title = location.name
             marker[location.id].snippet = location.description
             setMakerColor(id: location.id)
