@@ -53,11 +53,6 @@ class GoogleMapViewController: UIViewController {
         locationModel = LocationService()
         
         getLocation()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        
         view.reloadInputViews()
     }
     
@@ -77,7 +72,8 @@ class GoogleMapViewController: UIViewController {
                 let index = location.id - 1
                 self.marker.insert(GMSMarker(), at: index)
                 self.marker[index].position = CLLocationCoordinate2D(latitude: location.latitude ?? 0.0, longitude: location.longitude ?? 0.0)
-                self.setMakerColor(id: location.id, index: index)
+                self.ratingArray.insert(location.rating?.rating ?? 0.0, at: index)
+                self.setMakerColor(rating: self.ratingArray[index], index: index)
                 self.marker[index].title = location.name
                 self.marker[index].snippet = location.description
                 self.marker[index].map = self.mapView
@@ -86,21 +82,18 @@ class GoogleMapViewController: UIViewController {
             }
         }
     }
-    func setMakerColor(id: Int, index: Int) {
-        ratingModel?.getRatingInformation(id: id) { ratingInformation in
-            self.ratingInformation = ratingInformation
-            let rating = self.ratingInformation?.rating ?? 0.0
-            self.ratingArray.insert(rating, at: index)
-            
-            if rating >= 0 && rating < 3 {
-                self.marker[index].icon = GMSMarker.markerImage(with: .lightGray)
-            } else if rating >= 3 && rating < 4 {
-                self.marker[index].icon = GMSMarker.markerImage(with: .blue)
-            } else if rating >= 4 && rating < 5 {
-                self.marker[index].icon = GMSMarker.markerImage(with: .yellow)
-            } else if rating == 5 {
-                self.marker[index].icon = GMSMarker.markerImage(with: .red)
-            }
+    func setMakerColor(rating: Double, index: Int) {
+        if rating == 5 {
+            self.marker[index].icon = GMSMarker.markerImage(with: .red)
+        }
+        if rating >= 4 && rating < 5 {
+            self.marker[index].icon = GMSMarker.markerImage(with: .yellow)
+        }
+        if rating >= 3 && rating < 4 {
+            self.marker[index].icon = GMSMarker.markerImage(with: .blue)
+        }
+        if rating >= 0 && rating < 3 {
+            self.marker[index].icon = GMSMarker.markerImage(with: .lightGray)
         }
     }
 }
