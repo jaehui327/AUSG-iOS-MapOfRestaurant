@@ -91,7 +91,23 @@ $ pod install
 
 ## 프로젝트 파일 수정
 
-
+### 1. Location.swift
+```swift
+struct LocationList: Codable {
+    // 추가 부분
+    struct CustomData: Codable {
+        let rating: Double?
+    }
+    let id: Int
+    let longitude: Double?
+    let latitude: Double?
+    let name: String?
+    let description: String?
+    let address: String?
+    let rating: CustomData?
+    //
+}
+```
 
 
 ## TEST
