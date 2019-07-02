@@ -51,7 +51,46 @@
 ![](../images/iOS_guide/8.png)
 
 
-## iOS 프로젝트 파일 수정
+## iOS 프로젝트 파일 받기
+
+https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant
+
+위 링크에 접속하여 `Download ZIP`을 클릭해주세요.
+
+![](../images/iOS_guide/9.png)
+
+압축을 풀고 프로젝트 폴더를 확인합니다.
+
+![](../images/iOS_guide/10.png)
+
+`터미널`로 이동하여 `프로젝트 폴더`에서 `pod install` 해줍니다.
+
+```
+$ pod install
+```
+
+![](../images/iOS_guide/11.png)
+
+그리고 나서 `workspace` 파일로 열어주세요.
+
+![](../images/iOS_guide/12.png)
+
+
+
+일단 그냥 실행 시켜볼까요?
+
+![](../images/iOS_guide/13.png)
+
+현재 위치만 찍히는 지도의 모습입니다.
+
+![](../images/iOS_guide/14.png)
+
+
+
+위에서 봤던 모습처럼 수정해봅시다!!
+
+## 프로젝트 파일 수정
+
 
 
 
