@@ -8,7 +8,7 @@
 
 ### 구현이 완료되면 아래와 같은 어플리케이션을 볼 수 있습니다.
 
-![](../images/iOS_guide/2.png)
+![](images/iOS_guide/2.png)
 
 ---
 
