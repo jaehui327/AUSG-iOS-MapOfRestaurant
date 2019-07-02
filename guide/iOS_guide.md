@@ -94,7 +94,7 @@ $ pod install
 ### 1. Location.swift
 ```swift
 struct LocationList: Codable {
-    // 추가 부분
+    /* 추가 부분 시작 */
     struct CustomData: Codable {
         let rating: Double?
     }
@@ -105,9 +105,199 @@ struct LocationList: Codable {
     let description: String?
     let address: String?
     let rating: CustomData?
-    //
+    /* 추가 부분 끝 */
 }
 ```
+
+
+
+### 2. LocationNetworkModel.swift
+```swift
+import Alamofire
+
+struct LocationService {
+    /* 추가 부분 시작 */
+    // 주소 등록하기
+    // POST /locations
+    func postLocationInformation(longitude: Double, latitude: Double, name: String, description: String, address: String, completionHandler: @escaping (LocationList) -> Void) {
+        let params = ["longitude" : longitude,
+                      "latitude" : latitude,
+                      "name" : name,
+                      "description" : description,
+                      "address" : address] as [String : Any]
+        Alamofire.request("\(SERVER_URL)/locations",
+            method: .post,
+            parameters: params,
+            encoding: JSONEncoding.default,
+            headers: nil).responseData { dataResponse in
+                switch dataResponse.result {
+                case .success(let data):
+                    do {
+                        let locationList = try JSONDecoder().decode(LocationList.self, from: data)
+                        completionHandler(locationList)
+                    } catch {
+                        print("Got and error: \(error)")
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+        }
+    }
+    
+    // 모든 주소 가져오기
+    // GET /locations
+    func getLocationList(completionHandler: @escaping ([LocationList]) -> Void) {
+        Alamofire.request("\(SERVER_URL)/locations",
+            method: .get,
+            parameters: nil,
+            headers: nil).responseData{ dataResponse in
+                switch dataResponse.result {
+                case .success(let data):
+                    do {
+                        let locationLists = try JSONDecoder().decode([LocationList].self, from: data)
+                        completionHandler(locationLists)
+                    } catch {
+                        print("Got and error: \(error)")
+                }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+        }
+    }
+    /* 추가 부분 끝 */
+}
+
+```
+
+
+
+## 3. RatingNetworkModel.swift
+
+```swift
+import Alamofire
+
+struct RatingService {
+    /* 추가 부분 시작 */
+    // 별점 등록하기
+    // POST /rating
+    func postRatingInformation(rating: Int, locationId: Int, completionHandler: @escaping (RatingInformation) -> Void) {
+        let params = ["rating" : rating,
+                      "locationId" : locationId] as [String : Any]
+        Alamofire.request("\(SERVER_URL)/ratings",
+            method: .post,
+            parameters: params,
+            encoding: JSONEncoding.default,
+            headers: nil).responseData { dataResponse in
+                switch dataResponse.result {
+                case .success(let data):
+                    do {
+                        let ratingInformation = try JSONDecoder().decode(RatingInformation.self, from: data)
+                        completionHandler(ratingInformation)
+                    } catch {
+                        print("Got and error: \(error)")
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+        }
+    }
+    /* 추가 부분 끝 */
+}
+```
+
+
+
+## 4. GoogleMapViewController.swift
+
+### 1. func getLocation()
+
+```swift
+func getLocation() {
+/* 추가 부분 시작 */
+        // 장소 가져오기 - get location list
+        locationModel?.getLocationList{ locationLists in
+            // self.lactionLists에 대입
+            self.locationLists = locationLists
+            
+            // 응답 log
+            print("getLocationList success!")
+            
+            self.marker.removeAll()
+            self.ratingArray.removeAll()
+            self.ratingArray.removeAll()
+            
+            for location in self.locationLists {
+                let index = location.id - 1
+                self.marker.insert(GMSMarker(), at: index)
+                self.marker[index].position = CLLocationCoordinate2D(latitude: location.latitude ?? 0.0, longitude: location.longitude ?? 0.0)
+                self.ratingArray.insert(location.rating?.rating ?? 0.0, at: index)
+                self.setMakerColor(rating: self.ratingArray[index], index: index)
+                self.marker[index].title = location.name
+                self.marker[index].snippet = location.description
+                self.marker[index].map = self.mapView
+                
+                self.marker[index].zIndex = Int32(index)
+            }
+        }
+/* 추가 부분 끝 */
+    }
+```
+
+### 2. func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
+
+```swift
+func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        guard let viewController: DetailViewController = storyboard.instantiateViewController(withIdentifier: "Detail") as? DetailViewController else { return }
+        
+        let id = Int(marker.zIndex) + 1
+        viewController.locationId = id
+        viewController.name = marker.title ?? ""
+        viewController.rating = ratingArray[id - 1]
+        viewController.address = locationLists[id - 1].address ?? "" /* 주석 해제 */
+        
+        self.present(viewController, animated: true)
+    }
+```
+
+
+
+## 5. SetStarViewController.swift
+
+```swift
+@IBAction func sendRating(_ sender: Any) {
+/* 추가 부분 시작 */
+        ratingModel?.postRatingInformation(rating: starNum, locationId: locationId) { RatingInformation in
+            // 전송 완료 log
+            print("postRatingInformation success - locationId: \(self.locationId), starNum: \(self.starNum)")
+            self.dismiss(animated: true, completion: nil)
+        }
+/* 추가 부분 끝 */
+    }
+```
+
+
+
+## 6. AddRestaurantViewController.swift
+
+```swift
+@IBAction func tappedSend(_ sender: Any) {
+/* 추가 부분 시작 */
+        // textfield 값 Double형으로 변환
+        guard let longitude = NumberFormatter().number(from: longitudeTextField.text ?? "")?.doubleValue else { return }
+        guard let latitude = NumberFormatter().number(from: latitudeTextField.text ?? "")?.doubleValue else { return }
+        
+        // network
+        locaionModel?.postLocationInformation(longitude: longitude, latitude: latitude, name: nameTextField.text ?? "", description: descriptionTextField.text ?? "", address: addressTextField.text ?? "") { locationList in
+            // 전송 완료 log
+            print("postLocationIformation success - longitude : \(longitude), latitude: \(latitude), name: \(String(describing: self.nameTextField.text)), description: \(String(describing: self.descriptionTextField.text)), address: \(String(describing: self.addressTextField.text))")
+            self.navigationController?.popViewController(animated: true)
+        }
+/* 추가 부분 끝 */
+    }
+```
+
+## 7. ServerSting.swift
 
 
 ## TEST
