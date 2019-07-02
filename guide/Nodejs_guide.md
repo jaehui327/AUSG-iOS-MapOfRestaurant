@@ -235,7 +235,14 @@ Location.sync({ force: false }).then(function() {
 app.get('/locations', async function (req, res) {
   const locations = await Location.findAll()
 
-  console.log("All location:", JSON.stringify(locations, null, 4));
+  if (locations.length != 0) {
+    for (let i = 0; i < locations.length; i++) { 
+      rating = await getRating(locations[i].dataValues.id)
+      locations[i].dataValues.rating = rating
+    }
+  }
+
+  console.log("All location:", JSON.stringify(locations, null, 4))
   res.json(locations)
 })
 
@@ -248,7 +255,7 @@ app.post('/locations', async function (req, res) {
     address: req.body.address
   })
 
-  console.log("Location created:", JSON.stringify(newLocation, null, 4));
+  console.log("Location created:", JSON.stringify(newLocation, null, 4))
   res.json(newLocation)
 })
 
@@ -258,36 +265,41 @@ app.post('/ratings', async function (req, res) {
     locationId: req.body.locationId
   })
     
-  console.log("Rating created:", JSON.stringify(newRating, null, 4));
+  console.log("Rating created:", JSON.stringify(newRating, null, 4))
   res.json(newRating)
 })
 
 app.get('/ratings/:id', async function (req, res) {
-    const ratings = await Rating.findAll({
-      where: {
-        locationId: req.params.id
-      }
-    })
-    let rating = 0
-
-    if (ratings.length != 0) {
-      for (let i = 0; i < ratings.length; i++) { 
-        rating += ratings[i].dataValues.rating
-      }
-      console.log(rating)
-      rating /= ratings.length
-    }
-    let result ={
-        rating,
-    }
-      
-    console.log("Rating calculated: " + result.rating);
+    result = getRating(req.params.id)
+    console.log("Rating calculated: " + result.rating)
     res.json(result)
 })
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
+  console.log('Example app listening on port 3000!')
 })
+
+async function getRating(id) {
+  const ratings = await Rating.findAll({
+    where: {
+      locationId: id
+    }
+  })
+  let rating = 0
+
+  if (ratings.length != 0) {
+    for (let i = 0; i < ratings.length; i++) { 
+      rating += ratings[i].dataValues.rating
+    }
+    console.log(rating)
+    rating /= ratings.length
+  }
+  let result ={
+      rating,
+  }
+
+  return result
+}
 ```
 
 
