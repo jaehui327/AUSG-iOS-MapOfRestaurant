@@ -1,18 +1,10 @@
-//
-//  DetailViewController.swift
-//  MapOfFamousRestaurant
-//
-//  Created by JHKim on 27/06/2019.
-//  Copyright © 2019 JHKim. All rights reserved.
-//
-
 import UIKit
 
 class DetailViewController: UIViewController {
     
     var id = 0
     var name = ""
-    var descriptions = ""
+    var rating = 0.0
     var address = ""
     
     @IBOutlet weak var nameLabel: UILabel!
@@ -33,10 +25,13 @@ class DetailViewController: UIViewController {
     @IBAction func tappedClose(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
     }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        nameLabel.text = name
+        ratingLabel.text = String(rating)
+        addressLabel.text = address
+        
+    }
 }

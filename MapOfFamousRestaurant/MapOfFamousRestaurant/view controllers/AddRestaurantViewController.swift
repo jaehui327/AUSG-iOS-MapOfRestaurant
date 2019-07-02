@@ -1,11 +1,3 @@
-//
-//  AddRestaurantViewController.swift
-//  MapOfFamousRestaurant
-//
-//  Created by JHKim on 30/06/2019.
-//  Copyright © 2019 JHKim. All rights reserved.
-//
-
 import UIKit
 
 class AddRestaurantViewController: UIViewController {
