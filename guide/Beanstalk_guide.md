@@ -5,7 +5,7 @@
 Elastic Beasktalk에 올려서 배포하기 전에 코드를 수정해보겠습니다.
 
 
-`pakage.js` 파일을 다음과 같이 수정해주세요.
+`pakage.json` 파일을 다음과 같이 수정해주세요.
 
 ```javascript
 {
