@@ -379,3 +379,4 @@ let SERVER_URL = "[elastic beanstalk url]"
 
 ---
 
+- [삭제 가이드](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/delete_guide.md)
