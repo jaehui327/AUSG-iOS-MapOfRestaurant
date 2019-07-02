@@ -47,3 +47,5 @@ AWS 서비스를 사용하여 서버를 구축하기 때문에 AWS 계정이 필
 - [Elastic Beanstalk으로 배포하기](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/Beanstalk_guide.md)
 
 - [iOS 앱과 API 서버 연동하기](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/iOS_guide.md)
+
+- [삭제 가이드](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/delete_guide.md)
