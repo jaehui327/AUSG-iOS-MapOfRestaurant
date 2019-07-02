@@ -328,3 +328,11 @@ rating도 마찬가지입니다!
 ![](../images/Nodejs_guide/15.png)
 
 ![](../images/Nodejs_guide/16.png)
+
+
+
+---
+
+
+
+- [Elastic Beanstalk으로 배포하기](https://github.com/jaehui327/AUSG-iOS-MapOfRestaurant/blob/master/guide/Beanstalk_guide.md)
