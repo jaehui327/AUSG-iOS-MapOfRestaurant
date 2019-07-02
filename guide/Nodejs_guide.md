@@ -162,6 +162,8 @@ module.exports = sequelize
 
 `Master username`과 `마스터 암호`는 이전 단계에서 꼭 기억하라고 말씀드렸던 그 정보들 입니다. 😉
 
+![](../images/Nodejs_guide/17.png)
+
 
 
 다른 정보들을 확인하기 위해 AWS Console에 RDS 들어가주세요!
