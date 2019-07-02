@@ -4,7 +4,6 @@
 //
 //  Created by JHKim on 27/06/2019.
 //  Copyright © 2019 JHKim. All rights reserved.
-// 메가존 좌표: 37.498508, 127.034222
 
 import UIKit
 import GoogleMaps
@@ -18,10 +17,26 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
     var ratingModel: RatingService?
     var ratingInformation: RatingInformation?
     
+    let currentMarker = GMSMarker()
+    
     var marker: [GMSMarker] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Google Map
+        let camera = GMSCameraPosition.camera(withLatitude: 37.498508, longitude: 127.034222, zoom: 15.0)
+        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        mapView.delegate = self
+        view = mapView
+        
+        // 현재 위치
+        // 메가존 좌표: 37.498508, 127.034222
+        currentMarker.position = CLLocationCoordinate2D(latitude: 37.498508, longitude: 127.034222)
+        currentMarker.title = "megazone"
+        currentMarker.snippet = "Korea"
+        currentMarker.icon = GMSMarker.markerImage(with: .gray)
+        currentMarker.map = mapView
         
         // network
         locationModel = LocationService()
@@ -30,12 +45,6 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         }
         
         ratingModel = RatingService()
-        
-        // Google Map
-        let camera = GMSCameraPosition.camera(withLatitude: 37.498508, longitude: 127.034222, zoom: 15.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.delegate = self
-        view = mapView
         
         for location in locationLists ?? [] {
             marker[location.id] = GMSMarker()
