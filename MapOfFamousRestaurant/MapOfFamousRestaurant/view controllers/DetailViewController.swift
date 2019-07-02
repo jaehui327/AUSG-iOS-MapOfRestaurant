@@ -23,6 +23,7 @@ class DetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let viewController: SetStarViewController = storyboard.instantiateViewController(withIdentifier: "SetStar") as? SetStarViewController else { return }
         
+        // 다음 화면으로 주소 ID 값 넘기기
         viewController.locationId = self.locationId
         
         weak var pvc = self.presentingViewController
@@ -41,6 +42,7 @@ class DetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        // 이전 화면에서 받아온 값 보여주기
         nameLabel.text = name
         ratingLabel.text = String(rating)
         addressLabel.text = address
