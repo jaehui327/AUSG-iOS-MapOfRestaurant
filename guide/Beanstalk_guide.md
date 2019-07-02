@@ -4,7 +4,6 @@
 
 Elastic Beasktalk에 올려서 배포하기 전에 코드를 수정해보겠습니다.
 
-
 `pakage.json` 파일을 다음과 같이 수정해주세요.
 
 ```javascript
@@ -33,7 +32,7 @@ Elastic Beasktalk에 올려서 배포하기 전에 코드를 수정해보겠습�
 
 
 
-`server.js` 파일 가장 아래 부분을 `3000` -> `process.env.PORT` 으로 수정해주세요.
+`server.js` 파일 가장 아래 쪽 부근에 `3000` -> `process.env.PORT` 으로 수정해주세요.
 
 ```javascript
 const express = require('express')
@@ -47,6 +46,9 @@ const app = asyncify(express())
 app.listen(process.env.PORT, function () {
   console.log('Example app listening on port!');
 })
+
+...
+
 ```
 
 
