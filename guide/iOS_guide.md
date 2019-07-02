@@ -171,7 +171,7 @@ struct LocationService {
 
 
 
-## 3. RatingNetworkModel.swift
+### 3. RatingNetworkModel.swift
 
 ```swift
 import Alamofire
@@ -207,9 +207,9 @@ struct RatingService {
 
 
 
-## 4. GoogleMapViewController.swift
+### 4. GoogleMapViewController.swift
 
-### 1. func getLocation()
+#### 1) func getLocation()
 
 ```swift
 func getLocation() {
@@ -243,7 +243,7 @@ func getLocation() {
     }
 ```
 
-### 2. func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
+#### 2)  func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker)
 
 ```swift
 func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
@@ -262,7 +262,7 @@ func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
 
 
 
-## 5. SetStarViewController.swift
+### 5. SetStarViewController.swift
 
 ```swift
 @IBAction func sendRating(_ sender: Any) {
@@ -278,7 +278,7 @@ func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
 
 
 
-## 6. AddRestaurantViewController.swift
+### 6. AddRestaurantViewController.swift
 
 ```swift
 @IBAction func tappedSend(_ sender: Any) {
@@ -297,10 +297,19 @@ func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
     }
 ```
 
-## 7. ServerSting.swift
+### 7. ServerSting.swift
+
+```swift
+import Foundation
+
+let SERVER_URL = "[elastic beanstalk url]"
+
+```
+
 
 
 ## TEST
+
 맛집 지도를 만들기 위해 장소 등록이 필요합니다. 
 
 따라서 편하게 입력하실 수 있도록 몇 개의 장소를 제공하려고 합니다.
