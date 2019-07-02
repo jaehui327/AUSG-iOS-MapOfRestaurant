@@ -32,7 +32,7 @@ AWS 서비스를 사용하여 서버를 구축하기 때문에 AWS 계정이 필
 
 본 세션은 iOS 어플리케이션을 통해 클라이언트를 구현하기 때문에 Xcode 및 CocoaPods 등이 필요합니다.
 
-- Xcode 설치 가이드 [이동](https://github.com/AUSG/ausg-seminar-2019/tree/master/iOSTrack/preparation)
+- Xcode 설치 가이드 [이동](https://github.com/AUSG/ausg-seminar-2019/tree/master/iOSTrack/Preparation)
 
 ---
 
