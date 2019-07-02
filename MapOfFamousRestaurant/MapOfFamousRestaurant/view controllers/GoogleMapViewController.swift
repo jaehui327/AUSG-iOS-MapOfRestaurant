@@ -2,7 +2,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
+class GoogleMapViewController: UIViewController {
 
     // MARK: - proeprties
     // 장소 서비스 모델
@@ -33,8 +33,10 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         // 메가존 좌표 : 37.498508, 127.034222
         let camera = GMSCameraPosition.camera(withLatitude: 37.498508, longitude: 127.034222, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.delegate = self
         view = mapView
+        
+        // 델리게이트
+        mapView.delegate = self
         
         // network
         // 별점 서비스 대입
@@ -69,6 +71,7 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         }
     }
     
+    // MARK: Methods
     func setMakerColor(id: Int) {
         ratingModel?.getRatingInformation(id: id) { ratingInformation in
             
@@ -87,16 +90,21 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
             }
         }
     }
+}
 
+extension GoogleMapViewController: GMSMapViewDelegate {
+    
     // marker를 눌렀을 때 나오는 윈도우를 탭 했을 때 - 디테일 화면으로 이동
     func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         guard let viewController: DetailViewController = storyboard.instantiateViewController(withIdentifier: "Detail") as? DetailViewController else { return }
+        
         let id = Int(marker.zIndex) + 1
-        viewController.id = id
+        viewController.locationId = id
         viewController.name = marker.title ?? ""
         viewController.rating = ratingArray[id]
         viewController.address = locationLists?[id].address ?? ""
+        
         self.present(viewController, animated: true)
     }
 }

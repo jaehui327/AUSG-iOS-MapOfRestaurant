@@ -4,7 +4,7 @@ class SetStarViewController: UIViewController {
     
     var ratingModel: RatingService?
     
-    var id: Int = 0
+    var locationId = 0
     
     var starNum = 0
     
@@ -17,7 +17,7 @@ class SetStarViewController: UIViewController {
     @IBOutlet weak var sendButton: UIButton!
     
     @IBAction func sendRating(_ sender: Any) {
-        ratingModel?.postRatingInformation(rating: Double(starNum), locationId: id) { RatingInformation in
+        ratingModel?.postRatingInformation(rating: Double(starNum), locationId: locationId) { RatingInformation in
             self.dismiss(animated: true, completion: nil)
         }
     }
