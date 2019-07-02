@@ -57,32 +57,9 @@ class GoogleMapViewController: UIViewController {
     // MARK: Methods
     
     func getLocation() {
-        // 장소 가져오기 - get location list
-        locationModel?.getLocationList{ locationLists in
-            // self.lactionLists에 대입
-            self.locationLists = locationLists
-            
-            // 응답 log
-            print("getLocationList success!")
-            
-            self.marker.removeAll()
-            self.ratingArray.removeAll()
-            self.ratingArray.removeAll()
-            
-            for location in self.locationLists {
-                let index = location.id - 1
-                self.marker.insert(GMSMarker(), at: index)
-                self.marker[index].position = CLLocationCoordinate2D(latitude: location.latitude ?? 0.0, longitude: location.longitude ?? 0.0)
-                self.ratingArray.insert(location.rating?.rating ?? 0.0, at: index)
-                self.setMakerColor(rating: self.ratingArray[index], index: index)
-                self.marker[index].title = location.name
-                self.marker[index].snippet = location.description
-                self.marker[index].map = self.mapView
-                
-                self.marker[index].zIndex = Int32(index)
-            }
-        }
+        
     }
+    
     func setMakerColor(rating: Double, index: Int) {
         if rating == 5 {
             self.marker[index].icon = GMSMarker.markerImage(with: .red)

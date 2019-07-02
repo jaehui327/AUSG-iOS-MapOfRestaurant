@@ -23,11 +23,7 @@ class SetStarViewController: UIViewController {
     
     // 전송 버튼 클릭 시 별점 post
     @IBAction func sendRating(_ sender: Any) {
-        ratingModel?.postRatingInformation(rating: starNum, locationId: locationId) { RatingInformation in
-            // 전송 완료 log
-            print("postRatingInformation success - locationId: \(self.locationId), starNum: \(self.starNum)")
-            self.dismiss(animated: true, completion: nil)
-        }
+        
     }
     
     // MARK: - life cycle

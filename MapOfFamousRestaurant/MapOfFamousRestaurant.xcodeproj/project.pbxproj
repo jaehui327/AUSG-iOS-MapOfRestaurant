@@ -141,8 +141,8 @@
 			children = (
 				D95A61CF22C913EE0007A655 /* Location.swift */,
 				D95A61D322C9157B0007A655 /* LocationNetworkModel.swift */,
-				D95A61D522C915870007A655 /* RatingNetworkModel.swift */,
 				D982BCD422CBC1EC00458662 /* Rating.swift */,
+				D95A61D522C915870007A655 /* RatingNetworkModel.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";

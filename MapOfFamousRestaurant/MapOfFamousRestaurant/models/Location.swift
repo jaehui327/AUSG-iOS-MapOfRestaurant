@@ -4,15 +4,6 @@ import Foundation
 // GET /locations
 
 struct LocationList: Codable {
-    struct CustomData: Codable {
-        let rating: Double?
-    }
-    let id: Int
-    let longitude: Double?
-    let latitude: Double?
-    let name: String?
-    let description: String?
-    let address: String?
-    let rating: CustomData?
+    
     
 }
