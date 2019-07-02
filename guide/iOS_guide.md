@@ -49,3 +49,11 @@
   - name : kshgop
   - description : gopchang
   - address : Gangnam-gu, Seoul
+
+
+
+이 정보 외에도 
+  - longtitude : 127.02 ~ 06
+  - latitude : 37.47 ~ 51
+
+사이 값으로 장소를 넣어 주시면 현재 위치 근방으로 설정 가능합니다. ☺️
