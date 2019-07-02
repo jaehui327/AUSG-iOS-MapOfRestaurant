@@ -87,7 +87,7 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         viewController.locationId = id
         viewController.name = marker.title ?? ""
         viewController.rating = ratingArray[id - 1]
-        viewController.address = locationLists[id - 1].address ?? ""
+//        viewController.address = locationLists[id - 1].address ?? ""
         
         self.present(viewController, animated: true)
     }
