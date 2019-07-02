@@ -310,6 +310,11 @@ let SERVER_URL = "[elastic beanstalk url]"
 
 ## TEST
 
+짠! 완성되었습니다! 👏👏👏
+
+![](../images/Beanstalk_guide/15.png)
+
+
 맛집 지도를 만들기 위해 장소 등록이 필요합니다. 
 
 따라서 편하게 입력하실 수 있도록 몇 개의 장소를 제공하려고 합니다.
@@ -367,3 +372,10 @@ let SERVER_URL = "[elastic beanstalk url]"
   - latitude : 37.47 ~ 51
 
 사이 값으로 장소를 넣어 주시면 현재 위치 근방으로 설정 가능합니다. ☺️
+
+
+
+## 모두 수고하셨습니다. 앞으로도 재밌는 개발되세요! 🙏😉
+
+---
+
