@@ -29,10 +29,10 @@ struct RatingService {
     // 별점 가져오기
     // GET /rating
     func getRatingInformation(id: Int, completionHandler: @escaping (RatingInformation) -> Void) {
-        let params = ["id" : id]
+//        let params = ["id" : id]
         Alamofire.request("\(SERVER_URL)/ratings/\(id)",
             method: .get,
-            parameters: params,
+            parameters: nil,
             headers: nil).responseData{ dataResponse in
                 switch dataResponse.result {
                 case .success(let data):

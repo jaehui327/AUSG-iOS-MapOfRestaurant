@@ -8,7 +8,7 @@ class GoogleMapViewController: UIViewController {
     // 장소 서비스 모델
     var locationModel: LocationService?
     // 장소 리스트 (위도, 경도, 이름, 상세, 주소) 배열
-    var locationLists: [LocationList]?
+    var locationLists: [LocationList] = []
     
     // 별점 서비스 모델
     var ratingModel: RatingService?
@@ -22,18 +22,25 @@ class GoogleMapViewController: UIViewController {
     var marker: [GMSMarker] = []
     
     // 현재 위치
-    var currentMarker = GMSMarker()
+    let currentMarker = GMSMarker()
+    
+    // Google Map을 현재 view에 띄우기
+    // 메가존 좌표 : 37.498508, 127.034222
+    let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: GMSCameraPosition.camera(withLatitude: 37.498508, longitude: 127.034222, zoom: 15.0))
 
     // MARK: - life cycle
     // 뷰가 보이기 직전에 호출되는 함수
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        // Google Map을 현재 view에 띄우기
-        // 메가존 좌표 : 37.498508, 127.034222
-        let camera = GMSCameraPosition.camera(withLatitude: 37.498508, longitude: 127.034222, zoom: 15.0)
-        let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        // 현재 위치
         view = mapView
+        // 메가존 좌표: 37.498508, 127.034222
+        self.currentMarker.position = CLLocationCoordinate2D(latitude: 37.498508, longitude: 127.034222)
+        self.currentMarker.title = "megazone"
+        self.currentMarker.snippet = "Korea"
+        self.currentMarker.icon = GMSMarker.markerImage(with: .gray)
+        self.currentMarker.map = mapView
         
         // 델리게이트
         mapView.delegate = self
@@ -44,49 +51,55 @@ class GoogleMapViewController: UIViewController {
         
         // 장소 서비스 대입
         locationModel = LocationService()
+        
+        getLocation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        
+        view.reloadInputViews()
+    }
+    
+    // MARK: Methods
+    
+    func getLocation() {
         // 장소 가져오기 - get location list
         locationModel?.getLocationList{ locationLists in
             // self.lactionLists에 대입
             self.locationLists = locationLists
             
-            // 현재 위치
-            // 메가존 좌표: 37.498508, 127.034222
-            self.currentMarker.position = CLLocationCoordinate2D(latitude: 37.498508, longitude: 127.034222)
-            self.currentMarker.title = "megazone"
-            self.currentMarker.snippet = "Korea"
-            self.currentMarker.icon = GMSMarker.markerImage(with: .gray)
-            self.currentMarker.map = mapView
+            self.marker.removeAll()
+            self.ratingArray.removeAll()
+            self.ratingArray.removeAll()
             
-            // 장소 배열에서 장소 각각 읽어서 표시하기
-            for location in self.locationLists ?? [] {
-                self.marker.append(GMSMarker())
+            for location in self.locationLists {
                 let index = location.id - 1
+                self.marker.insert(GMSMarker(), at: index)
                 self.marker[index].position = CLLocationCoordinate2D(latitude: location.latitude ?? 0.0, longitude: location.longitude ?? 0.0)
+                self.setMakerColor(id: location.id, index: index)
                 self.marker[index].title = location.name
                 self.marker[index].snippet = location.description
+                self.marker[index].map = self.mapView
+                
                 self.marker[index].zIndex = Int32(index)
-                self.setMakerColor(id: location.id)
-                self.marker[index].map = mapView
             }
         }
     }
-    
-    // MARK: Methods
-    func setMakerColor(id: Int) {
+    func setMakerColor(id: Int, index: Int) {
         ratingModel?.getRatingInformation(id: id) { ratingInformation in
-            
             self.ratingInformation = ratingInformation
             let rating = self.ratingInformation?.rating ?? 0.0
-            self.ratingArray.append(rating)
+            self.ratingArray.insert(rating, at: index)
             
             if rating >= 0 && rating < 3 {
-                self.marker[id].icon = GMSMarker.markerImage(with: .lightGray)
+                self.marker[index].icon = GMSMarker.markerImage(with: .lightGray)
             } else if rating >= 3 && rating < 4 {
-                self.marker[id].icon = GMSMarker.markerImage(with: .blue)
+                self.marker[index].icon = GMSMarker.markerImage(with: .blue)
             } else if rating >= 4 && rating < 5 {
-                self.marker[id].icon = GMSMarker.markerImage(with: .yellow)
+                self.marker[index].icon = GMSMarker.markerImage(with: .yellow)
             } else if rating == 5 {
-                self.marker[id].icon = GMSMarker.markerImage(with: .red)
+                self.marker[index].icon = GMSMarker.markerImage(with: .red)
             }
         }
     }
@@ -102,8 +115,8 @@ extension GoogleMapViewController: GMSMapViewDelegate {
         let id = Int(marker.zIndex) + 1
         viewController.locationId = id
         viewController.name = marker.title ?? ""
-        viewController.rating = ratingArray[id]
-        viewController.address = locationLists?[id].address ?? ""
+        viewController.rating = ratingArray[id - 1]
+        viewController.address = locationLists[id - 1].address ?? ""
         
         self.present(viewController, animated: true)
     }
