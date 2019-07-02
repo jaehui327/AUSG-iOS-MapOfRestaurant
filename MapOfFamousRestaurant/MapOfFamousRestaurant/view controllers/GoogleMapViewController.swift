@@ -12,8 +12,6 @@ class GoogleMapViewController: UIViewController {
     
     // 별점 서비스 모델
     var ratingModel: RatingService?
-    // 별점 정보
-    var ratingInformation: RatingInformation?
     
     // 별점 배열
     var ratingArray: [Double] = []
@@ -65,7 +63,7 @@ class GoogleMapViewController: UIViewController {
             self.locationLists = locationLists
             
             // 응답 log
-            print("getLocationList success! locationLists: \(locationLists)")
+            print("getLocationList success!")
             
             self.marker.removeAll()
             self.ratingArray.removeAll()
