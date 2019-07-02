@@ -4,7 +4,7 @@ struct RatingService {
     
     // 별점 등록하기
     // POST /rating
-    func postRatingInformation(rating: Double, locationId: Int, completionHandler: @escaping (RatingInformation) -> Void) {
+    func postRatingInformation(rating: Int, locationId: Int, completionHandler: @escaping (RatingInformation) -> Void) {
         let params = ["rating" : rating,
                       "locationId" : locationId] as [String : Any]
         Alamofire.request("\(SERVER_URL)/ratings",
