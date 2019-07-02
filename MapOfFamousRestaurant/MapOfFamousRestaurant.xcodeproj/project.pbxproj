@@ -10,7 +10,6 @@
 		22BEE862EF028AEEC708C6EF /* Pods_MapOfFamousRestaurant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0D595BB1C1083B883CF0C5 /* Pods_MapOfFamousRestaurant.framework */; };
 		D95A61CE22C901920007A655 /* AddRestaurantViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61CD22C901920007A655 /* AddRestaurantViewController.swift */; };
 		D95A61D022C913EE0007A655 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61CF22C913EE0007A655 /* Location.swift */; };
-		D95A61D222C913F70007A655 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D122C913F70007A655 /* Rating.swift */; };
 		D95A61D422C9157B0007A655 /* LocationNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D322C9157B0007A655 /* LocationNetworkModel.swift */; };
 		D95A61D622C915870007A655 /* RatingNetworkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D522C915870007A655 /* RatingNetworkModel.swift */; };
 		D95A61D822C918610007A655 /* ServerString.swift in Sources */ = {isa = PBXBuildFile; fileRef = D95A61D722C918610007A655 /* ServerString.swift */; };
@@ -28,7 +27,6 @@
 		BE0D595BB1C1083B883CF0C5 /* Pods_MapOfFamousRestaurant.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MapOfFamousRestaurant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D95A61CD22C901920007A655 /* AddRestaurantViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRestaurantViewController.swift; sourceTree = "<group>"; };
 		D95A61CF22C913EE0007A655 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
-		D95A61D122C913F70007A655 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		D95A61D322C9157B0007A655 /* LocationNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationNetworkModel.swift; sourceTree = "<group>"; };
 		D95A61D522C915870007A655 /* RatingNetworkModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingNetworkModel.swift; sourceTree = "<group>"; };
 		D95A61D722C918610007A655 /* ServerString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerString.swift; sourceTree = "<group>"; };
@@ -141,7 +139,6 @@
 			children = (
 				D95A61CF22C913EE0007A655 /* Location.swift */,
 				D95A61D322C9157B0007A655 /* LocationNetworkModel.swift */,
-				D95A61D122C913F70007A655 /* Rating.swift */,
 				D95A61D522C915870007A655 /* RatingNetworkModel.swift */,
 			);
 			path = models;
@@ -285,7 +282,6 @@
 				D96584F822C4B06C0072CC5E /* SetStarViewController.swift in Sources */,
 				D9619E8722C39E0000CF34FE /* MapViewController.swift in Sources */,
 				D9619E8922C497BF00CF34FE /* GoogleMapViewController.swift in Sources */,
-				D95A61D222C913F70007A655 /* Rating.swift in Sources */,
 				D95A61D622C915870007A655 /* RatingNetworkModel.swift in Sources */,
 				D96584F622C4B0310072CC5E /* DetailViewController.swift in Sources */,
 				D95A61D422C9157B0007A655 /* LocationNetworkModel.swift in Sources */,

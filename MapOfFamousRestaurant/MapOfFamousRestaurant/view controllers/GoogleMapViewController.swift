@@ -64,6 +64,9 @@ class GoogleMapViewController: UIViewController {
             // self.lactionLists에 대입
             self.locationLists = locationLists
             
+            // 응답 log
+            print("getLocationList success! locationLists: \(locationLists)")
+            
             self.marker.removeAll()
             self.ratingArray.removeAll()
             self.ratingArray.removeAll()

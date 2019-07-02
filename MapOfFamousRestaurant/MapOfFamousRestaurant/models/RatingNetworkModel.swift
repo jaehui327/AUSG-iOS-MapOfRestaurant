@@ -25,27 +25,4 @@ struct RatingService {
                 }
         }
     }
-    
-    // 별점 가져오기
-    // GET /rating
-    func getRatingInformation(id: Int, completionHandler: @escaping (RatingInformation) -> Void) {
-//        let params = ["id" : id]
-        Alamofire.request("\(SERVER_URL)/ratings/\(id)",
-            method: .get,
-            parameters: nil,
-            headers: nil).responseData{ dataResponse in
-                switch dataResponse.result {
-                case .success(let data):
-                    do {
-                        let ratingInformation = try JSONDecoder().decode(RatingInformation.self, from: data)
-                        completionHandler(ratingInformation)
-                    } catch {
-                        print("Got and error: \(error)")
-                    }
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-        }
-    }
-    
 }
