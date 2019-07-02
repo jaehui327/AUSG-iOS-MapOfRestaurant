@@ -262,7 +262,9 @@ app.post('/ratings', async function (req, res) {
 
 app.get('/ratings/:id', async function (req, res) {
     const ratings = await Rating.findAll({
-      locationId: req.params.id
+      where: {
+        locationId: req.params.id
+      }
     })
     let rating = 0
 

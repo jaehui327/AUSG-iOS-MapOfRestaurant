@@ -22,6 +22,11 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
         // Google Map
         let camera = GMSCameraPosition.camera(withLatitude: 37.498508, longitude: 127.034222, zoom: 15.0)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
@@ -71,8 +76,8 @@ class GoogleMapViewController: UIViewController, GMSMapViewDelegate {
         guard let viewController: DetailViewController = storyboard.instantiateViewController(withIdentifier: "Detail") as? DetailViewController else { return }
         let id = Int(marker.zIndex)
         viewController.id = id
-        viewController.name = locationLists?[id].name ?? ""
-        viewController.descriptions = locationLists?[id].description ?? ""
+        viewController.name = marker.title ?? ""
+        viewController.descriptions = marker.snippet ?? ""
         viewController.address = locationLists?[id].address ?? ""
         self.present(viewController, animated: true)
     }
