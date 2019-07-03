@@ -42,7 +42,9 @@ AWS Console에 접속하여 RDS를 검색 후 RDS 서비스로 접속합니다.
 
 ![](../images/RDS_guide/5.png)
 
+`연결` 탭에서 Default VPC을 선택해주세요.
 
+![](../images/RDS_guide/9.png)
 
 아래로 내려 `추가 구성` 탭을 열어주세요.
 
