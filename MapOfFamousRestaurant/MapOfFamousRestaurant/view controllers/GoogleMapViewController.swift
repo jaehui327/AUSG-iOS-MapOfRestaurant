@@ -32,6 +32,7 @@ class GoogleMapViewController: UIViewController {
         super.viewWillAppear(true)
         
         // 현재 위치
+        mapView.clear() // 맵뷰 클리어
         view = mapView
         // 메가존 좌표: 37.498508, 127.034222
         self.currentMarker.position = CLLocationCoordinate2D(latitude: 37.498508, longitude: 127.034222)
