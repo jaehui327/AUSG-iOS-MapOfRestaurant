@@ -199,6 +199,39 @@ module.exports = sequelize
 
 ### RDS 수정
 
+#### 1. 보안그룹
+
+`연결 & 보안` 탭에서 `보안` -> `VPC 보안 그룹` 을 눌러 이동해주세요.
+
+![](../images/Nodejs_guide/19.png)
+
+
+
+`인바운드` 탭으로 들어가 `편집` 버튼을 누릅니다.
+
+
+![](../images/Nodejs_guide/20.png)
+
+`규칙 추가` 를 누릅니다.
+
+
+![](../images/Nodejs_guide/21.png)
+
+- `유형` : `MYSQL/Auror` 선택
+- `소스` : `위치 무관` 선택
+
+위 두개 사항을 선택해주시고 저장을 눌러주세요.
+
+
+![](../images/Nodejs_guide/22.png)
+
+아래와 같이 규칙이 추가된 모습이 보이면 성공입니다.
+
+
+![](../images/Nodejs_guide/23.png)
+
+#### 2. 퍼블릭 액세스
+
 생성된 RDS 수정을 클릭해주세요.
 
 ![](../images/Nodejs_guide/8.png)
