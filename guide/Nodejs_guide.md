@@ -83,9 +83,22 @@ $ npm install body-parser express express-asyncify mysql2 sequelize
 -  sequelize
 총 세 가지의 모델을 만들어보겠습니다.
 
+
+
+
+계층 구조는 다음과 같습니다.
+
+![](../images/Nodejs_guide/18.png)
+
+
+
+
 먼저 `models` 디렉토리를 만들어주세요.
 
 ![](../images/Nodejs_guide/5.png)
+
+
+
 
 ### location.js
 
