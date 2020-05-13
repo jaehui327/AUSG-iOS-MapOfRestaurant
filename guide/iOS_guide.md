@@ -11,45 +11,48 @@
 
 #### 별점에 따라 마커의 색상의 변화를 주어 맛집을 구분할 수 있는 맛집 지도입니다. 😆🍴🍔
 
-![](../images/iOS_guide/2.png)
-
-
+<p align="center">
+<img src="../images/iOS_guide/2.png" width="400"><br>
+</p>
 
 #### 오른쪽 하단의 `+` 버튼을 누르면 장소를 추가할 수 있습니다.
 
-
-![](../images/iOS_guide/3.png)
-
-
+<p align="center">
+<img src="../images/iOS_guide/3.png" width="400"><br>
+</p>
 
 #### 장소를 추가하면 지도에 위치가 뜹니다. 
 
 #### 마커를 탭하면 나오는 window를 다시 탭하면 상세 정보를 볼 수 있습니다.
 
-![](../images/iOS_guide/4.png)
-
+<p align="center">
+<img src="../images/iOS_guide/4.png" width="400"><br>
+</p>
 
 
 #### 아직은 별점 정보가 없는 상태입니다! 넣어볼까요?
 
-![](../images/iOS_guide/5.png)
+<p align="center">
+<img src="../images/iOS_guide/5.png" width="400"><br>
+</p>
 
 #### 별을 탭하여 별점을 선택할 수 있습니다! 4점을 선택해볼게요!
 
-![](../images/iOS_guide/6.png)
-
-
+<p align="center">
+<img src="../images/iOS_guide/6.png" width="400"><br>
+</p>
 
 #### 짠! 노란색 마커로 바뀌었습니다. 😎
 
-![](../images/iOS_guide/7.png)
-
-
+<p align="center">
+<img src="../images/iOS_guide/7.png" width="400"><br>
+</p>
 
 #### 상세 화면에 별점도 알맞게 변화된 것을 확인할 수 있습니다.
 
-![](../images/iOS_guide/8.png)
-
+<p align="center">
+<img src="../images/iOS_guide/8.png" width="400"><br>
+</p>
 
 ## iOS 프로젝트 파일 받기
 
@@ -312,8 +315,9 @@ let SERVER_URL = "[elastic beanstalk url]"
 
 짠! 완성되었습니다! 👏👏👏
 
-![](../images/Beanstalk_guide/15.png)
-
+<p align="center">
+<img src="../images/iOS_guide/15.png" width="400"><br>
+</p>
 
 맛집 지도를 만들기 위해 장소 등록이 필요합니다. 
 
@@ -323,9 +327,7 @@ let SERVER_URL = "[elastic beanstalk url]"
 
 아래 지도는 AUSG에서 공유하는 맛집 지도입니다. 😊 (몇 군데 없지만.. 본의 아니게 맥주집 위주.. ㅎㅎㅎ)
 
-
 ![](../images/iOS_guide/1.png)
-
 
 이 지도에 있는 장소에 대한 정보는 다음과 같습니다.
 
