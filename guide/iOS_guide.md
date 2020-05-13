@@ -86,9 +86,9 @@ $ pod install
 
 현재 위치만 찍히는 지도의 모습입니다.
 
-![](../images/iOS_guide/14.png)
-
-
+<p align="center">
+<img src="../images/iOS_guide/14.png" width="400"><br>
+</p>
 
 위에서 봤던 모습처럼 수정해봅시다!!
 
