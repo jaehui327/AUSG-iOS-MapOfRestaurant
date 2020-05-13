@@ -8,8 +8,9 @@
 
 ### 구현이 완료되면 아래와 같은 어플리케이션을 볼 수 있습니다.
 
-![](images/iOS_guide/2.png)
-
+<p align="center">
+<img src="images/iOS_guide/2.png" width="400"><br>
+</p>
 ---
 
 ### 해당 세션을 진행하기 위해서는 아래와 같은 것들이 필요합니다.
